@@ -1,0 +1,10 @@
+[2023-04-30 15:31:45,388] ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper: 142] ОШИБКА: значение NULL в столбце "id" отношения "persons" нарушает ограничение NOT NULL
+  Подробности: Ошибочная строка содержит (null, Pavel, Kozlov, 33, null).
+[2023-04-30 15:35:19,273] ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper: 142] ОШИБКА: значение NULL в столбце "id" отношения "persons" нарушает ограничение NOT NULL
+  Подробности: Ошибочная строка содержит (null, Pavel, Kozlov, 33, null).
+[2023-04-30 15:37:22,047] ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper: 142] ОШИБКА: значение NULL в столбце "id" отношения "addresses" нарушает ограничение NOT NULL
+  Подробности: Ошибочная строка содержит (null, Minsk, Nemiga, 11).
+[2023-05-01 13:51:45,545] ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper: 142] ОШИБКА: UPDATE или DELETE в таблице "addresses" нарушает ограничение внешнего ключа "persons_id_address_fkey" таблицы "persons"
+  Подробности: На ключ (id)=(1) всё ещё есть ссылки в таблице "persons".
+[2023-05-01 13:54:15,118] ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper: 142] ОШИБКА: UPDATE или DELETE в таблице "addresses" нарушает ограничение внешнего ключа "persons_id_address_fkey" таблицы "persons"
+  Подробности: На ключ (id)=(1) всё ещё есть ссылки в таблице "persons".

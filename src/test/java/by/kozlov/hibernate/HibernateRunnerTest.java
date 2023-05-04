@@ -15,7 +15,7 @@ class HibernateRunnerTest {
 
         session.beginTransaction();
         var address = session.get(Address.class,1L);
-        var persons = session.createQuery("FROM Person P WHERE P.address = :address")
+        var persons = session.createQuery("FROM Person P WHERE P.address = :address",Person.class)
                 .setParameter("address",address).list();
         System.out.println(persons);
         session.getTransaction().commit();
@@ -47,7 +47,7 @@ class HibernateRunnerTest {
         @Cleanup var session = HibernateUtil.getSession();
         session.beginTransaction();
 
-        var address = (Address) session.createQuery("FROM Address A WHERE A.city = :name_city")
+        var address = (Address) session.createQuery("FROM Address A WHERE A.city = :name_city",Address.class)
                 .setParameter("name_city","Moscow").list().stream().findFirst().orElseThrow();
         var person = Person.builder().name("Sasha").surname("Kovalev").age(12)
                 .address(address).build();
@@ -56,7 +56,7 @@ class HibernateRunnerTest {
         session.save(person);
         session.save(person1);
 
-        System.out.println(session.createQuery("FROM Person P WHERE P.address.city = :name_city")
+        System.out.println(session.createQuery("FROM Person P WHERE P.address.city = :name_city",Person.class)
                 .setParameter("name_city",address.getCity()).list());
         session.getTransaction().commit();
     }
@@ -73,7 +73,7 @@ class HibernateRunnerTest {
         session.save(address);
         session.save(address1);
 
-        System.out.println(session.createQuery("FROM Address").list());
+        System.out.println(session.createQuery("FROM Address",Address.class).list());
         session.getTransaction().commit();
 
     }
@@ -95,7 +95,7 @@ class HibernateRunnerTest {
         @Cleanup var session = HibernateUtil.getSession();
         session.beginTransaction();
 
-        var person = (Person)session.createQuery("FROM Person P WHERE P.name = :name")
+        var person = (Person)session.createQuery("FROM Person P WHERE P.name = :name",Person.class)
                         .setParameter("name","Pavel").list().stream().findFirst()
                         .orElseThrow();
 
@@ -114,7 +114,7 @@ class HibernateRunnerTest {
         var address = session.get(Address.class,1L);
         session.delete(address);
 
-        System.out.println(session.createQuery("FROM Address").list());
+        System.out.println(session.createQuery("FROM Address",Address.class).list());
         session.getTransaction().commit();
     }
 
